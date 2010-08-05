@@ -19,4 +19,14 @@ if(LIB_STRING_CLASS::FStrEq("mytext", "mytext"))
 
 // Convert a string into a Vector
 Vector vec = LIB_STRING_CLASS::StrToVec("-85463.23 5621.54 16478.64");
+
+// Convert to upper case
+// Result = PLUGINTEMPLATE
+const char *upperCase = LIB_STRING_CLASS::StrToUpper("plugintemplate");
+
+// Returns the portion of string specified by the start and length parameters.
+// Result = "phrase to test"
+const char *result = LIB_STRING_CLASS::SubStr("a cool phrase to test", 7, strlen("a cool phrase to test"));
 }}}
+
+Fell free to explore :)
