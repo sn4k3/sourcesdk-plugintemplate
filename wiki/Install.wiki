@@ -1,0 +1,18 @@
+#summary One-sentence summary of this page.
+#labels Featured,Phase-Deploy
+
+= Introduction =
+
+Here you will learn now to install the plugintemplate and turn it into your plugin.
+
+
+= Installation =
+
+  # You need a copy of HL2SDK, i recommend you get it from here: http://hg.alliedmods.net/hl2sdks/
+  # Copy '*plugintemplate*' folder to: *HL2SDK/utils/* (You can rename the folder)
+  # Get metamod sources, if you don't want to use Metamod, you must have at same.<br>Download fom: http://sourcemm.net/downloads (plugintemplate was compiled with Metamod:Source 1.8.2)
+  # Unrar metamod to: *HL2SDK/*<br>*Note:* folder name should be: 'mmsource' otherwise you have to change a couple of things on plugin.
+  # Installation done
+  # Open the plugin project and start codding.
+
+*Final Note:* Is your plugin a VSP only?, Metamod is only needed for SourceHook and metamod_oslink.
