@@ -1,0 +1,51 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+People how make this plugin possible
+
+
+= Credits =
+
+ * *sn4k3*
+        Tiago Conceição (Me)<br>
+        Plugintemplate codding
+
+ * *Valve*
+        http://developer.valvesoftware.com/wiki/SDK_Docs<br>
+        Games and plugin interface
+
+ * *Mani-Admin-Plugin*
+        http://www.mani-admin-plugin.com<br>
+        The idea of redirect serverplugin_engine.cpp callbacks for serverplugin_main.cpp to ensure max compability and better updates came from him
+	
+ * *Metamod:Source Team*
+        http://sourcemm.net<br>
+        For the metamod interface and SourceHook.<br>
+        Functions FormatIface, InterfaceSearch, VInterfaceMatch copied to serverplugin_engine for best compalibity with VSP plugins.<br>
+        The plugin samples helpme implement the new metamod source
+
+ * *nemod*
+        Google it!<br>
+        Many people never know what nemod is, but all i can say it was good as Mani is now ;)<br>
+        Timers idea came from nemod<br>
+        In old sources i used nemod timers.
+
+ * *awuh0*
+        http://forums.eventscripts.com/memberlist.php?mode=viewprofile&u=13<br>
+        (EST) ES Tools developer.<br>
+        A nice guy who teach me important things on C++ and SourceSDK.<br>
+        He gave the following functions:<br>
+        MRecipientFilter::(TeamToEnum, AddByFilter)<br>
+        CStringLib::(H2toInt, Hex2Int, Str2Sig, StrToHexStr, StrNew, StrCopy)<br>
+        CMessageLib::(Menu) from accepting dynamic options in string<br>
+        Plus the forgot ones<br>
+        A big thank to awuh0, THANK YOU<br>
+	
+
+ * *Mattie*
+        http://mattie.net/cs/<br>
+        Eventscripts scripts are now python based, so optional you can compile your plugin with python support.<br>
+        And make your plugin ES friendly<br>
+        Compile with python feature is dedicated to Eventscripts.<br>
+        Thanks for the great EventScripts and what I learned there
