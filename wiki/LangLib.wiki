@@ -1,0 +1,94 @@
+#summary How to use CEntityLib class
+#labels Phase-Implementation
+
+= Introduction =
+
+Lang library is a class, all methods are related to languages and translations, the names and comments are self explanatory<br>
+This class can be disabled by comment out *USE_LIB_LANG*
+
+
+== Configure ==
+
+{{{
+// Files WildCard, search for files
+// ie. *.phrases.txt
+#define SETTING_LIB_LANG_WILDCARD "*.*"
+
+// Directory to search for translation files
+// Use a full path to file, to use a single file instead ie. ""PLUGIN_DATA_DIR"translations.txt"
+#define SETTING_LIB_LANG_PATH ""PLUGIN_DATA_DIR"translations/"
+}}}
+
+== Translation Files Format ==
+
+{{{
+// main.phrases.txt
+"translation"
+{
+	"#namespace"	"main"
+	"one"
+	{
+		"default"	"EN"
+		"EN"		"one"
+		"PT"		"um"
+	}
+	"two"
+	{
+		"DEFAULT"	"EN"
+		"EN"		"two"
+		"PT"		"dois"
+	}
+	"translateme"
+	{
+		"DEFAULT"	"EN"
+		"EN"		"Hi! You wan't me to translate"
+		"PT"		"Olá! Tu queres que eu traduza"
+	}
+}
+
+// menu.phrases.txt
+"translation"
+{
+	"#namespace"	"menu"
+	"next"
+	{
+		"default"	"EN"
+		"EN"		"Next"
+		"PT"		"Seguinte"
+	}
+	"back"
+	{
+		"DEFAULT"	"EN"
+		"EN"		"Back"
+		"PT"		"Anterior"
+	}
+	"exit"
+	{
+		"DEFAULT"	"EN"
+		"EN"		"Exit"
+		"PT"		"Sair"
+	}
+}
+}}}
+
+= How To Use =
+
+Never use *CLangLib* directly, instead we use *LIB_LANG_CLASS*<br>
+This class must be initialized fist, so if you are using that library you can use: *VAR_LIB_LANG* variable or your short define to it ie. *vlLang*
+
+{{{
+// some examples
+
+// Get a translation for a language
+// Deafult translation returns if the requested one is not present
+// Result = "Seguinte" (Portguese) (next in english)
+const char *phrase = VAR_LIB_LANG->GetLangStr("menu", "next", "pt");
+Msg("Translated 'menu' to: %s\n", phrase);
+
+// Also is possible get translation according player game language
+// ie. Result = "Hi there, welcome to our server."
+const char *phrase = VAR_LIB_LANG->GetLangStr(pEntity, "greetings", "playerjoin");
+Msg("%s\n", phrase);
+}}}
+
+Fell free to explore :)
