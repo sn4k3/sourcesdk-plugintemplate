@@ -1,4 +1,4 @@
-#summary Plugintemplate Compatibility
+#summary Compatibility
 #labels Phase-Requirements
 
 = Compatibility =
