@@ -1,5 +1,5 @@
 #summary How to use plugintemplate source
-#labels Phase-Design
+#labels Phase-Design,Featured
 
 = How to use =
 
