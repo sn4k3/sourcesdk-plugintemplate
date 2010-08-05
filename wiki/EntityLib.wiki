@@ -3,7 +3,8 @@
 
 = Introduction =
 
-Entity library is a static class, all methods are related to entities and conversions, the names and comments are self explanatory
+Entity library is a static class, all methods are related to entities and conversions, the names and comments are self explanatory<br>
+This class is always compiled and can't be disabled
 
 
 = How To Use =
