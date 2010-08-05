@@ -1,4 +1,4 @@
-#summary How to use CStringLib class
+#summary How to use CStringLib AKA LIB_STRING_CLASS class
 #labels Phase-Implementation
 
 = Introduction =
