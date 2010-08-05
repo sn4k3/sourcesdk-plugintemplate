@@ -23,6 +23,31 @@ This class can be disabled by comment out *USE_LIB_LANG*
 == Translation Files Format ==
 
 {{{
+// Avaliable Languages
+	enum Languages
+	{
+		DEFAULT = 0,
+		EN,
+		ES,
+		FR,
+		IT,
+		DE,
+		KO,
+		ZHCN,
+		ZHTW,
+		RU,
+		TH,
+		JA,
+		PT,
+		PL,
+		DA,
+		NL,
+		FI,
+		NB,
+		SV,
+		INVALIDLANG
+	};
+
 // main.phrases.txt
 "translation"
 {
