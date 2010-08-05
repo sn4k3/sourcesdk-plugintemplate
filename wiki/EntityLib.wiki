@@ -8,7 +8,7 @@ Entity library is a static class, all methods are related to entities and conver
 
 = How To Use =
 
-Never use *CEntityLib* directly, instead we use LIB_ENTITY_CLASS
+Never use *CEntityLib* directly, instead we use *LIB_ENTITY_CLASS*
 
 {{{
 // some examples
