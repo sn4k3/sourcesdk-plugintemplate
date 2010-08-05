@@ -1,4 +1,4 @@
-#summary How to use CEntityLib class
+#summary How to use CLangLib class
 #labels Phase-Implementation
 
 = Introduction =
