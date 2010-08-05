@@ -1,0 +1,32 @@
+#summary How to use CEntityLib class
+#labels Phase-Implementation
+
+= Introduction =
+
+Entity library is a static class, all methods are related to entities and conversions, the names and comments are self explanatory
+
+
+= How To Use =
+
+Never use *CEntityLib* directly, instead we use LIB_ENTITY_CLASS
+
+{{{
+// some examples
+
+// check if edict is safe to use
+if(!LIB_ENTITY_CLASS::IsEntitySafe(pEntity))
+   return false;
+
+// Get player index from userid
+int playerIndex = LIB_ENTITY_CLASS::GetIndexFromUserID(2);
+
+// Get IPlayerinfo from edict
+IPlayerinfo pinfo = LIB_ENTITY_CLASS::GetPlayerinfoFromEntity(pEntity);
+if(!pinfo) return; // Not safe
+pinfo->GetName(); // Player name
+
+// Get entities count on the map by name
+unsigned int count = LIB_ENTITY_CLASS::GetEntityCount("weapon_deagle");
+}}}
+
+Fell free to explore :)
