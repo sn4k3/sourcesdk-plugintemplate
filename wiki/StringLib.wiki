@@ -1,0 +1,22 @@
+#summary How to use CStringLib class
+#labels Phase-Implementation
+
+= Introduction =
+
+String library is a static class, all methods are related to strings, the names and comments are self explanatory 
+
+
+= How To Use =
+
+Never use *CStringLib* directly, instead we use *LIB_STRING_CLASS*
+
+{{{
+// Some examples
+
+// Compare two strings (const char *)
+if(LIB_STRING_CLASS::FStrEq("mytext", "mytext"))
+   return true;
+
+// Convert a string into a Vector
+Vector vec = LIB_STRING_CLASS::StrToVec("-85463.23 5621.54 16478.64");
+}}}
