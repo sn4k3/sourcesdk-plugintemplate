@@ -3,7 +3,7 @@
 
 = Introduction =
 
-We all know MRecipientFilter class, all methods are related to add players index to a list, the names and comments are self explanatory
+We all know MRecipientFilter class, all methods are related to add players index to a list, the names and comments are self explanatory<br>
 This class is always compiled and can't be disabled
 
 
