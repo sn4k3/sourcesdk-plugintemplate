@@ -3,7 +3,7 @@
 
 = Introduction =
 
-Message library is a static class, all methods are related with UserMessages and others ways to message a player, the names and comments are self explanatory
+Message library is a static class, all methods are related with UserMessages and others ways to message a player, the names and comments are self explanatory<br>
 This class is always compiled and can't be disabled
 
 
