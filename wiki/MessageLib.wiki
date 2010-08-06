@@ -1,0 +1,44 @@
+#summary How to use CMessageLib class
+#labels Phase-Implementation
+
+= Introduction =
+
+Message library is a static class, all methods are related with UserMessages and others ways to message a player, the names and comments are self explanatory
+This class is always compiled and can't be disabled
+
+
+= How To Use =
+
+Never use *CMessageLib* directly, instead we use *LIB_MESSAGE_CLASS*
+
+{{{
+// Lets print text on player chat
+LIB_MESSAGE_CLASS::Say(pEntity, "Hello\n");
+
+// Lets print text on all players chat
+// Filters
+LIB_MESSAGE_CLASS::Say("#h", "Hello\n");
+
+// Shake player screen for 10s
+LIB_MESSAGE_CLASS::Shake(pEntity, 10, SHAKE_START, 25, 200);
+
+// Show a Hint to player
+LIB_MESSAGE_CLASS::Hint(pEntity, "testing messages\nHint may bip");
+
+// Send a menu to players
+// Only numbers 1, 2 and 0 will  interact with the menu
+LIB_MESSAGE_CLASS::Menu("#h!l", "Im a menu\n \n->1. Option One\n->2. Option Two\n \n0. Exit", "019");
+
+// Redirect player to other server (OB Only)
+// Player have 20s to accept or deny
+LIB_MESSAGE_CLASS::Redirect(pEntity, 20, "82.64.11.64:27015");
+
+// Send a rich box to player, it shows for last 60s
+// No its not MS Word :P
+LIB_MESSAGE_CLASS::RichBox(pEntity, 60, "Title: hi player", "Today we are offering 16k cash each round\nBut if you buy awp, your salary will be cut\n \nEnjoy");
+
+// Entry player, ask something
+LIB_MESSAGE_CLASS::Entry(pEntity, 0, "You will die", "kill", "On quit you will die, so think how you can avoid your death\nHint: Deads cant die again.");
+}}}
+
+Fell free to explore :)
