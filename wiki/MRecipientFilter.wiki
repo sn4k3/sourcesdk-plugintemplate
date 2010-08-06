@@ -44,7 +44,7 @@ Never use *MRecipientFilter* directly, instead we use *LIB_MRECIPIENTFILTER_CLAS
 
 LIB_MRECIPIENTFILTER_CLASS mrf;
 // Lets add all humans and not dead
-mrf.AddByFilter("#h!d"); /*SAME AS*/ mrf.AddByFilter("#a!b!d"); /*SAME AS*/ mrf.AddByFilter("#l!d");
+mrf.AddByFilter("#h!d"); /*SAME AS*/ mrf.AddByFilter("#a!b!d"); /*SAME AS*/ mrf.AddByFilter("#l!b");
 
 // Lets add a complex one
 // This one will add players: not bots, not unsigned, not dead
