@@ -102,3 +102,5 @@ mrf.AddByFilter("#23);
 // Always think on: if i do 'h2' it will add all humans and after all players from team 2 don't care if it is a bot, so humans rule got override.
 // so it must be '2!b'
 }}}
+
+Fell free to explore and don't fear the filters :)
