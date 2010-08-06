@@ -1,0 +1,81 @@
+#summary How to use CTimerLib class
+#labels Phase-Implementation
+
+= Introduction =
+
+Timer library is a class, you can delay a action, ie. give weapons after 2s player spawn, the names and comments are self explanatory<br>
+This class can be disabled by comment out *USE_LIB_TIMER*
+
+= How To Use =
+
+Never use *CTimerLib* directly, instead we use *LIB_LANG_CLASS*
+This class must be initialized first, so if you are using that library you can use: *VAR_LIB_TIMER* variable or your short define to it ie. *vlTimer*
+
+{{{
+// Add a new timer, named test, will repeat 3 times from 10s to 10s
+VAR_LIB_TIMER->Add("test", 10, 3, false, (void*)"Hi there from plugin");
+
+// Dynamic call from rcon command
+PLUGIN_CON_COMMAND(countdown, "Show a count down in console")
+{
+	if(args.ArgC() < 2)
+	{
+		Msg("Syntax: %s <positive-number>\n",args.Arg(0)); // Error Message
+		return;
+	}
+	int repeats = atoi(args.Arg(1));
+	if(repeats < 1)
+	{
+		Msg("Syntax: %s <positive-number>\n",args.Arg(0)); // Error Message
+		return;
+	}
+#ifndef USE_LIB_TIMER
+	Msg("Timers are disabled, can't count down\n");
+#else
+	if(VAR_LIB_TIMER->Exists("countdown"))
+	{
+		Msg("Currently there are one count down, wait for his termination!\n");
+	}
+	else
+		VAR_LIB_TIMER ->Add("countdown", 1, repeats, false, NULL, NULL, NULL, repeats);
+#endif
+}
+}}}
+
+Timers got added, now you must handle<br>
+Open your *plugin_timers.cpp*
+
+{{{
+// You should have something like:
+// Global timers callback, all timers triggers came to here
+bool PLUGIN_TIMERS_CLASS::TimerCallback(const char *sender, void *Param0, CUtlVector<void *>* Param2, CUtlVector<void *>* Param3, int Param4)
+{
+	LIB_TIMERINFO_CLASS *timer = VAR_LIB_TIMER->GetTimer(sender);	// Timer class, NULL if not alive (Repeats ends)
+	// From here treat other arguments as you need.
+	// You can create your own functions and redirect from here
+	if(LIB_STRING_CLASS::FStrEq(sender, "test"))
+	{
+		const char *arg1 = (const char *)Param0; // I know Param0 is a const char*, so lets convert it
+		
+		Msg("Lets see what plugin says: %s\n", arg1);
+		if(timer != NULL)
+			Msg("Repeats: %u of %u\n", timer->repeatsCount, timer->repeats);
+		else
+			Msg("Good bye for now.\n");
+		return true;
+	}
+	if(LIB_STRING_CLASS::FStrEq(sender, "countdown"))
+	{
+		// Note: we simply can use repeats, but i will show you, now to use dynamic arguments.
+		Msg("CountDown: %i\n", Param4);
+		if(timer)
+			timer->SetArguments(NULL, NULL, NULL, Param4-1);
+		else
+			Msg("COUNTDOWN ENDS.\n");
+		return true;
+	}
+	return false;
+}
+}}}
+
+Fell free to explore :)
