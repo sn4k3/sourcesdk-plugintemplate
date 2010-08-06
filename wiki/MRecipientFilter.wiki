@@ -1,0 +1,104 @@
+#summary How to use MRecipientFilter class
+#labels Phase-Implementation
+
+= Introduction =
+
+We all know MRecipientFilter class, all methods are related to add players index to a list, the names and comments are self explanatory
+This class is always compiled and can't be disabled
+
+
+= How To Use =
+
+Never use *MRecipientFilter* directly, instead we use *LIB_MRECIPIENTFILTER_CLASS*
+
+
+{{{
+// MRecipientFilter is familiar to all, so im showing new implementations, Add by player filter
+
+// we have:
+	// Add players by filter.
+	// # for begin a player filter.
+	// ! for remove a player filter.
+	// a = All players.
+	// u or 0 = Unsigned Team.
+	// s or 1 = Spectator Team.
+	// t or 2 = Terrorist Team (Team 2)
+	// c or 3 = Countert-Terrorist Team (Team 3)
+	// b = Bots
+	// h = humman players.
+	// l = Living players.
+	// d = Dead players.
+	//
+	// if '|' is the first char on the filter string, partial will be activated (set to true)
+	// Set 'forceDisablePartial' to true for disable so, (filter string can't activate partial '|' itself)
+	//
+	// Also support player names, userid, steamid with multi players.
+	// "2 3 4 playername STEAM_1:1:25416446" OR "2" OR "STEAM_0:0:1111" OR "nameonly"
+	// Multi players are only recomendate for Userids and SteamIds, players name sometimes have spaces.
+	//
+	// 'Partial' allow you add players by steam or by name with partial name eg
+	// eg. true player name: "my name is player" in partial can be "my " or "my name" ...
+	//
+	// Return player count.
+	// int AddByFilter(const char *filter, bool partial = true, bool forceDisablePartial = false); 
+
+LIB_MRECIPIENTFILTER_CLASS mrf;
+// Lets add all humans and not dead
+mrf.AddByFilter("#h!d"); /*SAME AS*/ mrf.AddByFilter("#a!b!d");
+
+// Lets add a complex one
+// This one will add players: not bots, not unsigned, not dead
+mrf.AddByFilter("#a!b!u!d");
+
+// Add by userid
+// Support multiple
+mrf.AddByFilter("2 5 6 10");
+
+// Add by name
+// Support multiple
+mrf.AddByFilter("sn4k3 dev plugin");
+
+// Add by SteamID
+// Support multiple
+mrf.AddByFilter("STEAM_ID_LAN STEAM_0:1:54643 STEAM_1:1:25416446");
+
+// Add by mix (userid, name, steamid)
+// Support multiple
+mrf.AddByFilter("sn4k3 5 STEAM_ID_LAN 9 STEAM_0:1:54643 STEAM_1:1:25416446 myname 40");
+
+// Add by partial
+// If you want to type only a partial name or steamid
+// Imagine if there are 5 sn4k3 at the server (sn4k3_1, sn4k3_2, sn4k3_3, sn4k3_4)
+// Result = All players with name started with 'sn' will got added to list, same to SteamIDS
+mrf.AddByFilter("sn", true, false);
+
+// Add by partial string way
+// Same as previous example
+// Partial is disable, but '|' will activate partial to entire string
+mrf.AddByFilter("|sn", false, false);
+
+
+// Add within a radius
+Vector vec = Vector("-6954.33 6125.99 1056.11");
+mrf.AddWithinRadius(vec, 100);
+
+}}}
+
+*Note:* AddByFilter can get you to add wrong players, look:
+{{{
+// You may think that will add All humans alive
+mrf.AddByFilter("#hl");
+
+// Thats wrong, you are overriding all humans to all living (including bots)
+// To get it correct must be:
+mrf.AddByFilter("#h!d");
+
+// A sample usage without !
+// Add team 2 and team 3 to list
+// Here we doesn't override a rule
+mrf.AddByFilter("#23);
+
+
+// Always think on: if i do 'h2' it will add all humans and after all players from team 2 don't care if it is a bot, so humans rule got override.
+// so it must be '2!b'
+}}}
