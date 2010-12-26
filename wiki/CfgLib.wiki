@@ -74,10 +74,10 @@ Its possible exec files, to do so:
 // all files must be under cfg/ folder
 LIB_CFG_CLASS::Exec("server.cfg"); // LIB_CFG_CLASS::Exec("server"); also works
 
-// To exec a server in other folder we can use ExecEx
+// To exec a cfg in other folder we can use ExecEx
 LIB_CFG_CLASS::ExecEx("addons/plugintemplate/cfg/config.cfg");
 
-if you need exec and handle file you can try ExecEx2
+if you need exec and handle file you can try ExecEx2, it will return a LIB_CFG_CLASS* object
 LIB_CFG_CLASS *servercfg = LIB_CFG_CLASS::ExecEx2("cfg/server.cfg");
 if(servercfg)
 {
