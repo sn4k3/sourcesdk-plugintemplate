@@ -13,7 +13,9 @@ Plugin Template is compatible with:
        * Original / Episode 1
        * Dark Messiah
        * Orange Box / Episode 2
+       * Orange Box Valve / Episode 2
        * Left 4 Dead
        * Left 4 Dead 2
+       * Alien Swarm
 
 _MACOS not tested_
