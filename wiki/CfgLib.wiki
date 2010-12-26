@@ -1,0 +1,95 @@
+#summary How to use CCfgLib class
+#labels Phase-Implementation
+
+= Introduction =
+
+Cfg library is a class, you can handle .cfg files (write, read, remove, exec, ...), the names and comments are self explanatory<br>
+This library idea came from Eventscripts [http://python.eventscripts.com/pages/Cfglib cfglib]
+
+= How To Use =
+
+Never use *CCfgLib* directly, instead we use *LIB_CFG_CLASS*
+
+{{{
+// Initalize class
+LIB_CFG_CLASS *config = new LIB_CFG_CLASS("addons/plugintemplate/cfg/config.cfg");
+// We will create a config file, if don't exists one already
+// Make sure your text cvar and command names exists, otherwise it will be treated like Text in Load()
+if(!config->Load())
+{
+	// Can't load, procede to creation
+	config->Text("//***********************************//"); // Append a text line
+	config->Text("//      PLUGIN TEMPLATE CONFIG       //"); 
+	config->Text("//***********************************//");
+
+	config->CVar("pt_rounds", "10", "Mod is only active in first 10 rounds"); // Append a cvar
+	config->CVar("pt_enableclasses", "1", "Enable or not the plugin classes");
+	config->CVar("pt_speed", "1", "Speed up gameplay up to defined value");
+	config->Command("pt_addclass", "\"weapon_ak47, weapon_deagle\""); // Append an command
+	config->Command(VAR_IFACE_ICVAR->FindCommand("mani_sethealth"), "#all 1000"); // Append an command giving and ConCommand*
+	// Don't have mani? not a problem, command must exists to be written first
+
+	config->CVar(VAR_IFACE_ICVAR->FindVar("mp_restartgame"), "3"); // Append a var giving and ConVar*
+	// Save to file
+	config->Write();
+}
+// Change speed, we need more!
+config->CVar("pt_speed", "2", "Speed up gameplay up to defined value");
+// After load or create, execute cvars and commands
+config->Execute();
+// Save new configs
+config->Write(NULL, true, true, true, true/*We need to overwrite file*/, true);
+// If no longer needed, object should be free
+config->~LIB_CFG_CLASS();
+}}}
+
+Now lets check our "addons/plugintemplate/cfg/config.cfg"
+
+{{{
+//***********************************//
+//      PLUGIN TEMPLATE CONFIG       //
+//***********************************//
+// Mod is only active in first 10 rounds
+pt_rounds 10
+
+// Enable or not the plugin classes
+pt_enableclasses 1
+
+// Speed up gameplay up to defined value
+pt_speed 2
+
+pt_addclass "weapon_ak47, weapon_deagle"
+
+// Don't have mani? not a problem, command must exists to be written first
+// Yes i dont have mani-admin-plugin installed!
+ 
+// If non-zero, game will restart in the specified number of seconds
+mp_restartgame 3
+}}}
+
+Its possible exec files, to do so:
+
+{{{
+// exec a cfg file using rcon exec method
+// all files must be under cfg/ folder
+LIB_CFG_CLASS::Exec("server.cfg"); // LIB_CFG_CLASS::Exec("server"); also works
+
+// To exec a server in other folder we can use ExecEx
+LIB_CFG_CLASS::ExecEx("addons/plugintemplate/cfg/config.cfg");
+
+if you need exec and handle file you can try ExecEx2
+LIB_CFG_CLASS *servercfg = LIB_CFG_CLASS::ExecEx2("cfg/server.cfg");
+if(servercfg)
+{
+	Msg("Config Lines: %i\n", servercfg->vec_file.Count());
+	servercfg->Print(); // Print output file to console text
+	servercfg->Write("cfg/serverCOPY.cfg", true, true, true, true); // Create a server.cfg copy under cfg/ folder
+	servercfg->~LIB_CFG_CLASS(); // Free resources when are no longer needed
+}
+else
+{
+	Msg("No server.cfg file found\n");
+}
+}}}
+
+Fell free to explore :)
