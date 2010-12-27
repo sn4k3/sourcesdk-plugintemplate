@@ -1,5 +1,5 @@
 #summary How to use MRecipientFilter class
-#labels Phase-Implementation
+#labels Phase-Implementation,Featured
 
 = Introduction =
 
