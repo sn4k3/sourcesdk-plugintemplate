@@ -117,4 +117,4 @@ const char *phrase = VAR_LIB_LANG->GetLangStr(pEntity, "greetings", "playerjoin"
 Msg("%s\n", phrase);
 }}}
 
-Fell free to explore :)
+Feel free to explore :)
