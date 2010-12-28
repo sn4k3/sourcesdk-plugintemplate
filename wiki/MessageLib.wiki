@@ -41,4 +41,4 @@ LIB_MESSAGE_CLASS::RichBox(pEntity, 60, "Title: hi player", "Today we are offeri
 LIB_MESSAGE_CLASS::Entry(pEntity, 0, "You will die", "kill", "On quit you will die, so think how you can avoid your death\nHint: Deads cant die again.");
 }}}
 
-Fell free to explore :)
+Feel free to explore :)
