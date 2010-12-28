@@ -29,4 +29,4 @@ const char *upperCase = LIB_STRING_CLASS::StrToUpper("plugintemplate");
 const char *result = LIB_STRING_CLASS::SubStr("a cool phrase to test", 7, strlen("a cool phrase to test"));
 }}}
 
-Fell free to explore :)
+Feel free to explore :)
