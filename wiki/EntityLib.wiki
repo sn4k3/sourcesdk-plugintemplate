@@ -30,4 +30,4 @@ pinfo->GetName(); // Player name
 unsigned int count = LIB_ENTITY_CLASS::GetEntityCount("weapon_deagle");
 }}}
 
-Fell free to explore :)
+Feel free to explore :)
