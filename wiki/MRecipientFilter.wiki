@@ -103,4 +103,4 @@ mrf.AddByFilter("#23);
 // so it must be '2!b'
 }}}
 
-Fell free to explore and don't fear the filters :)
+Feel free to explore and don't fear the filters :)
