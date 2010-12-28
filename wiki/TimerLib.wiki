@@ -78,4 +78,4 @@ bool PLUGIN_TIMERS_CLASS::TimerCallback(const char *sender, void *Param0, CUtlVe
 }
 }}}
 
-Fell free to explore :)
+Feel free to explore :)
