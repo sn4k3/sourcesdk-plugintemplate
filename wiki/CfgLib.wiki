@@ -92,4 +92,4 @@ else
 }
 }}}
 
-Fell free to explore :)
+Feel free to explore :)
