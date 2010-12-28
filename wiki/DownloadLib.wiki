@@ -1,0 +1,60 @@
+#summary How to use CDownloadLib class
+#labels Phase-Implementation
+
+= Introduction =
+
+Download library is a class, all methods are related to client downloads, the names and comments are self explanatory<br>
+When enabled all files on download list will be added to server downloads on *LevelInit* and when plugin *loads* after map change<br>
+This class can be disabled by comment out *USE_LIB_DOWNLOAD*
+
+
+== How To Use ==
+
+Never use *CDownloadLib* directly, instead we use *LIB_DOWNLOAD_CLASS*<br>
+This class must be initialized fist, so if you are using that library you can use: *VAR_LIB_DOWNLOAD* variable or your short define to it ie. *vlDownload*
+
+On your *PLUGIN_CLASS::Load()* you can add your files to be downloaded every map
+To do so:
+
+{{{
+bool PLUGIN_CLASS::Load(CreateInterfaceFn interfaceFactory, CreateInterfaceFn gameServerFactory)
+{
+	// Add files if exists
+	VAR_LIB_DOWNLOAD->Add("sound/plugintemplate/join.mp3", true);
+	VAR_LIB_DOWNLOAD->Add("sound/plugintemplate/mapchange.mp3", true);
+	VAR_LIB_DOWNLOAD->Add("sound/plugintemplate/vote.mp3", true);
+	VAR_LIB_DOWNLOAD->Add("sound/plugintemplate/kick.mp3", true);
+	VAR_LIB_DOWNLOAD->Add("sound/plugintemplate/hi.mp3", true);
+	// Tired of adding one by one?, try this
+	VAR_LIB_DOWNLOAD->Add("sound/plugintemplate/", LIB_DOWNLOAD_CLASS::DOWNLOAD_FOLDER, "*.mp3", false);
+	// You also can create a list in a text file (one file per line)
+	VAR_LIB_DOWNLOAD->Add("addons/plugintemplate/data/downloads.txt", LIB_DOWNLOAD_CLASS::DOWNLOAD_FROMFILE);
+}
+// Done, every time the map change the previous files will be added to server downloads automatically
+}}}
+
+Not using *Donwload library* but you need to add client downloads?<br>
+Not a problem, *LIB_DOWNLOAD_CLASS* provide some static methods to add downloads to clients<br>
+
+Must be used every *LevelInit*
+
+{{{
+//---------------------------------------------------------------------------------
+// Purpose: called on level start
+//---------------------------------------------------------------------------------
+void PLUGIN_CLASS::LevelInit(char const *pMapName, const char *pOldMapName)
+{
+	LIB_DOWNLOAD_CLASS::AddDownload("sound/plugintemplate/join.mp3");
+	LIB_DOWNLOAD_CLASS::AddDownload("sound/plugintemplate/mapchange.mp3");
+	LIB_DOWNLOAD_CLASS::AddDownload("sound/plugintemplate/vote.mp3");
+	LIB_DOWNLOAD_CLASS::AddDownload("sound/plugintemplate/kick.mp3");
+	LIB_DOWNLOAD_CLASS::AddDownload("sound/plugintemplate/hi.mp3");
+	// Tired of adding one by one?, try this
+	LIB_DOWNLOAD_CLASS::AddDownload("sound/plugintemplate/", LIB_DOWNLOAD_CLASS::DOWNLOAD_FOLDER, "*.mp3", false);
+	// You also can create a list in a text file (one file per line)
+	LIB_DOWNLOAD_CLASS::AddDownload("addons/plugintemplate/data/downloads.txt", LIB_DOWNLOAD_CLASS::DOWNLOAD_FROMFILE);
+}
+}}}
+
+
+Fell free to explore :)
