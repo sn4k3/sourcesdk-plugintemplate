@@ -1,0 +1,110 @@
+#summary How to use CPlayerLib class
+#labels Phase-Implementation
+
+= Introduction =
+
+Player library is a class, you can handle players by using static methods or create an instance that points to a player, the names and comments are self explanatory<br>
+
+
+= How To Use =
+
+Never use *CPlayerLib* directly, instead we use *LIB_PLAYER_CLASS*<br>
+*NOTE:* You may notice there are a *plugin_player.cpp* in your main files, this one is if you want to create your own player lib, it also extendes *LIB_PLAYER_CLASS*<br>
+So instead use *LIB_PLAYER_CLASS* we can use *PLUGIN_PLAYER_CLASS*
+
+Some examples using static methods:
+
+{{{
+// Is player alive?
+PLUGIN_PLAYER_CLASS::IsAlive(pEntity);
+
+// Check if player is valid and not a bot (false argument), and return the IPlayerInfo object
+IPlayerInfo *pinfo = PLUGIN_PLAYER_CLASS::IsPlayer(pEntity, true);
+if(pinfo)
+	Msg("Player: %s\n", pinfo->GetName());
+
+// Kill Player
+PLUGIN_PLAYER_CLASS::Kill(pEntity);
+
+// Force client to reconnect without droping the netchannel
+PLUGIN_PLAYER_CLASS::Reconnect(pEntity);
+
+// Execute a command in every player
+PLUGIN_PLAYER_CLASS::Sexec("#a", "say hi");
+}}}
+
+Getting a random player:
+
+{{{
+PLUGIN_CON_COMMAND(randplayer, "Get a random player")
+{
+	if(args.ArgC() < 2)
+	{
+		Msg("Syntax: %s <players>\n",args.Arg(0)); // Error Message
+		return;
+	}
+	LIB_PLAYER_CLASS *player = new LIB_PLAYER_CLASS(LIB_ENTITY_CLASS::GetEntityOfRandPlayer(args.Arg(1)));
+	if(!player->IsValid())
+	{
+		Msg("No player found\n");
+		return;
+	}
+
+	Msg("Rand player: %s\n", player->PlayerInfo()->GetName());
+}
+}}}
+
+Print a player list to console
+
+{{{
+PLUGIN_CON_COMMAND(playerlist, "List players")
+{
+	if(args.ArgC() < 2)
+	{
+		Msg("Syntax: %s <players>\n",args.Arg(0)); // Error Message
+		return;
+	}
+	LIB_MRECIPIENTFILTER_CLASS mrf;
+	mrf.AddByFilter(args.Arg(1), false);
+	Msg(""PLUGIN_HEADER"Player List\n_____________________________\nTotal Players: %i\n", mrf.GetRecipientCount());
+	for(int i = 0; i < mrf.GetRecipientCount(); i++)
+	{
+		LIB_PLAYER_CLASS *player = new LIB_PLAYER_CLASS(mrf.GetRecipientIndex(i));
+		Msg("Player '%s' [%s]:\nIndex = %i\nUserid: %i\n----------------------\n", 
+			player->PlayerInfo()->GetName(), player->SteamID(), player->Index(), player->UserID());
+		player->~LIB_PLAYER_CLASS();
+	}
+}
+}}}
+
+Set player health:
+
+{{{
+PLUGIN_CON_COMMAND(sethealth, "Set player health")
+{
+	if(args.ArgC() < 3)
+	{
+		Msg("Syntax: %s <players> <amount>\n",args.Arg(0)); // Error Message
+		return;
+	}
+	int amount = atoi(args.Arg(2));
+	LIB_MRECIPIENTFILTER_CLASS mrf;
+	mrf.AddByFilter(args.Arg(1), false);
+	for(int i = 0; i < mrf.GetRecipientCount(); i++)
+	{
+		LIB_PLAYER_CLASS *player = new LIB_PLAYER_CLASS(mrf.GetRecipientIndex(i));
+		if(!player->IsAlive())
+		{
+			Msg("ERROR: Dead player, can't set health to: %s\n", player->PlayerInfo()->GetName());
+			player->~LIB_PLAYER_CLASS();
+			continue;
+		}
+		VAR_LIB_PROP->Prop_SetInt(PEntityOfEntIndex(mrf.GetRecipientIndex(i)), "CBasePlayer", "m_iHealth", amount);
+		int health = VAR_LIB_PROP->Prop_GetInt(player->Edict(), "CBasePlayer", "m_iHealth");
+		Msg("Player '%s', have now %i Health\n", player->PlayerInfo()->GetName(), health);
+		player->~LIB_PLAYER_CLASS();
+	}
+}
+}}}
+
+Feel free to explore :)
