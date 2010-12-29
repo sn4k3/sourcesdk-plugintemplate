@@ -33,5 +33,15 @@ for(int i = 0; i < VAR_LIB_PLAYERMNGR->Count(); i++)
 }
 }}}
 
+Easy way to retrieve a player
+
+{{{
+// Choose one
+PLUGIN_PLAYER_CLASS *player = VAR_LIB_PLAYERMNGR->GetPlayer(pEntity);
+PLUGIN_PLAYER_CLASS *player = VAR_LIB_PLAYERMNGR->GetPlayerByName("sn4k3");
+PLUGIN_PLAYER_CLASS *player = VAR_LIB_PLAYERMNGR->GetPlayerByUserID(2);
+PLUGIN_PLAYER_CLASS *player = VAR_LIB_PLAYERMNGR->GetPlayerBySteamID("STEAM_ID_LAN");
+}}}
+
 
 Feel free to explore :)
