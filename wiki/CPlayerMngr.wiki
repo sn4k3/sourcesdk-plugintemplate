@@ -1,0 +1,37 @@
+#summary How to use CPlayerMngr class
+#labels Phase-Implementation
+
+= Introduction =
+
+Player Manager library is collection of *PLUGIN_PLAYER_CLASS* classes, when enabled plugin will automatically add and remove clients from list when they disconnect / connect, the names and comments are self explanatory<br>
+This class can be disabled by comment out *USE_LIB_PLAYERMNGR*
+
+The purpose of this library its for keep the current list of players inside a player class<br>
+When using this library by plugintemplate, never use Add or Remove clients functions
+
+= How To Use =
+
+Never use *CPlayerMngr* directly, instead we use *LIB_PLAYERMNGR_CLASS*<br>
+This class must be initialized fist, so if you are using that library you can use: *VAR_LIB_PLAYERMNGR* variable or your short define to it ie. *vlPlayermngr*
+
+Some examples:
+
+loop all players
+
+{{{
+// foreach players inside PLAYERMNGR
+for(int i = 0; i < VAR_LIB_PLAYERMNGR->Count(); i++)
+{
+	PLUGIN_PLAYER_CLASS *player = VAR_LIB_PLAYERMNGR->vec_players[i];
+	// Its just a way to loop all players, but lets kill all
+	player->Kill();
+	
+	/*
+	Never do that since its a pointer, doing such will make player invalid on the list
+	player->~PLUGIN_PLAYER_CLASS();
+	*/
+}
+}}}
+
+
+Feel free to explore :)
