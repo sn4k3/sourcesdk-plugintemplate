@@ -14,11 +14,11 @@ This class must be initialized first, so if you are using that library you can u
 
 == Tips ==
 
-Hack Library is linked to your *PLUGIN_VFUNCS_CLASS* and *PLUGIN_SIGSCAN_CLASS* if you want access any of them call VAR_LIB_HACK.<br>
+Hack Library is linked to your *PLUGIN_VFUNCS_CLASS* and *PLUGIN_SIGSCAN_CLASS* if you want access any of them call *VAR_LIB_HACK*.<br>
 You also can access commun and game configurations if they are avaliable.
 
 
-Samples:
+== Samples ==
 
 {{{
 PLUGIN_CON_COMMAND(sethealth, "Set player health")
