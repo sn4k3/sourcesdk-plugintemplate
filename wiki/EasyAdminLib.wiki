@@ -1,0 +1,69 @@
+#summary How to use CEasyAdminLib class
+#labels Phase-Implementation
+
+= Introduction =
+
+Easy Admin library is a class, all methods are related to simple admin checks, the names and comments are self explanatory<br>
+Easy Admin its a simple administration class, only works by steamid and there aren't any type of permissions.<br>
+This class can be disabled by comment out *USE_LIB_EASYADMIN*
+
+
+== How To Use ==
+
+Never use *CEasyAdminLib* directly, instead we use *LIB_EASYADMIN_CLASS*<br>
+This class must be initialized fist, so if you are using that library you can use: *VAR_LIB_EASYADMIN* variable or your short define to it ie. *vlEasyAdmin*
+
+== Tips ==
+
+When using Easy Admin by plugintemplate *USE_LIB_EASYADMIN* admin files got saved and loaded when its need to, you don't need to care about that<br>
+Auto save can also be desactivated by set *SETTING_LIB_EASYADMIN_AUTOSAVE* to false or comment
+
+Sample:
+
+{{{
+PLUGIN_CON_COMMAND(makeadmin, "Add a steam id as admin")
+{
+	if(!VAR_LIB_EASYADMIN)
+	{
+		Msg("Easy Admin features are disabled.");
+		return;
+	}
+	if(args.ArgC() < 2)
+	{
+		Msg("Syntax: %s <steamid>\n",args.Arg(0)); // Error Message
+		return;
+	}
+	VAR_LIB_EASYADMIN->Add(args.Arg(1));
+}
+
+PLUGIN_CON_COMMAND(isadmin, "Check if a steam id was an admin")
+{
+	if(!VAR_LIB_EASYADMIN)
+	{
+		Msg("Easy Admin features are disabled.");
+		return;
+	}
+	if(args.ArgC() < 2)
+	{
+		Msg("Syntax: %s <steamid>\n",args.Arg(0)); // Error Message
+		return;
+	}
+	if(VAR_LIB_EASYADMIN->IsAdmin(args.Arg(1)))
+		Msg("%s is an admim\n", args.Arg(1));
+	else
+		Msg("%s is not an admim\n", args.Arg(1));
+}
+
+PLUGIN_CON_COMMAND(printadmins, "Show all admins steamids")
+{
+	if(!VAR_LIB_EASYADMIN)
+	{
+		Msg("Easy Admin features are disabled.");
+		return;
+	}
+	VAR_LIB_EASYADMIN->PrintAdmins();
+}
+}}}
+
+
+Fell free to explore :)
