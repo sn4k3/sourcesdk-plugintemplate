@@ -1,0 +1,239 @@
+#summary How to use CHackLib class
+#labels Phase-Implementation
+
+= Introduction =
+
+Hack library is a class, all methods are related to plugin hacks like vfuncs, props and sigscan, the names and comments are self explanatory<br>
+Hack Library will always load with your plugin.
+
+
+== How To Use ==
+
+Never use *CHackLib* directly, instead we use *LIB_HACK_CLASS*<br>
+This class must be initialized first, so if you are using that library you can use: *VAR_LIB_HACK* variable or your short define to it ie. *vlHack*
+
+== Tips ==
+
+Hack Library is linked to your *PLUGIN_VFUNCS_CLASS* and *PLUGIN_SIGSCAN_CLASS* if you want access any of them call VAR_LIB_HACK.<br>
+You also can access commun and game configurations if they are avaliable.
+
+
+Samples:
+
+{{{
+PLUGIN_CON_COMMAND(sethealth, "Set player health")
+{
+	if(args.ArgC() < 3)
+	{
+		Msg("Syntax: %s <players> <amount>\n",args.Arg(0)); // Error Message
+		return;
+	}
+	int amount = atoi(args.Arg(2));
+	LIB_MRECIPIENTFILTER_CLASS mrf;
+	mrf.AddByFilter(args.Arg(1), false);
+	for(int i = 0; i < mrf.GetRecipientCount(); i++)
+	{
+		LIB_PLAYER_CLASS *player = new LIB_PLAYER_CLASS(mrf.GetRecipientIndex(i));
+		if(!player->IsAlive())
+		{
+			Msg("ERROR: Dead player, can't set health to: %s\n", player->PlayerInfo()->GetName());
+			player->~LIB_PLAYER_CLASS();
+			continue;
+		}
+		VAR_LIB_PROP->Prop_SetInt(PEntityOfEntIndex(mrf.GetRecipientIndex(i)), "CBasePlayer", "m_iHealth", amount);
+		int health = VAR_LIB_PROP->Prop_GetInt(player->Edict(), "CBasePlayer", "m_iHealth");
+		Msg("Player '%s', have now %i Health\n", player->PlayerInfo()->GetName(), health);
+		player->~LIB_PLAYER_CLASS();
+	}
+}
+
+PLUGIN_CON_COMMAND(health, "Math player health")
+{
+	if(args.ArgC() < 4)
+	{
+		Msg("Syntax: %s <players> <amount> <operator>\n",args.Arg(0)); // Error Message
+		return;
+	}
+	int amount = atoi(args.Arg(2));
+	char coperator = *args.Arg(3);
+	LIB_MRECIPIENTFILTER_CLASS mrf;
+	mrf.AddByFilter(args.Arg(1), false);
+	for(int i = 0; i < mrf.GetRecipientCount(); i++)
+	{
+		LIB_PLAYER_CLASS *player = new LIB_PLAYER_CLASS(mrf.GetRecipientIndex(i));
+		if(!player->IsAlive())
+		{
+			Msg("ERROR: Dead player, can't set health to: %s\n", player->PlayerInfo()->GetName());
+			player->~LIB_PLAYER_CLASS();
+			continue;
+		}
+		int currenthealth = VAR_LIB_PROP->Prop_GetInt(player->Edict(), "CBasePlayer", "m_iHealth");
+		switch(coperator)
+		{
+		case '+':
+			amount += currenthealth;
+			break;
+		case '-':
+			amount = currenthealth-amount;
+			break;
+		case '*':
+			amount *= currenthealth;
+			break;
+		case '/':
+			amount = currenthealth/amount;
+			break;
+		}
+		if(amount < 0)
+		{
+			Msg("Can't set player '%s' Health, value is negative\n", player->PlayerInfo()->GetName());
+			return;
+		}
+		VAR_LIB_PROP->Prop_SetInt(player->Edict(), "CBasePlayer", "m_iHealth", amount);
+		Msg("Player '%s', have now %i Health\n", player->PlayerInfo()->GetName(), amount);
+		player->~LIB_PLAYER_CLASS();
+	}
+
+}
+
+PLUGIN_CON_COMMAND(setplayerprop, "Set player property")
+{
+	if(args.ArgC() < 4)
+	{
+		Msg("Syntax: %s <players> <prop> <value>\n",args.Arg(0)); // Error Message
+		return;
+	}
+	LIB_MRECIPIENTFILTER_CLASS mrf;
+	mrf.AddByFilter(args.Arg(1), false);
+	for(int i = 0; i < mrf.GetRecipientCount(); i++)
+	{
+		VAR_LIB_PROP->Prop_SetDynamic(mrf.GetRecipientEdict(i), args.Arg(2), NULL, args.Arg(3));
+	}
+}
+
+PLUGIN_CON_COMMAND(setplayerdmap, "Set player datamap")
+{
+	if(args.ArgC() < 4)
+	{
+		Msg("Syntax: %s <players> <datamap_name> <value>\n",args.Arg(0)); // Error Message
+		return;
+	}
+	LIB_MRECIPIENTFILTER_CLASS mrf;
+	mrf.AddByFilter(args.Arg(1), false);
+	for(int i = 0; i < mrf.GetRecipientCount(); i++)
+	{
+		VAR_LIB_PROP->Map_SetDynamic(mrf.GetRecipientBaseEntity(i), args.Arg(2), args.Arg(3));
+	}
+}
+
+PLUGIN_CON_COMMAND(getplayerprop, "Get player property")
+{
+	if(args.ArgC() < 3)
+	{
+		Msg("Syntax: %s <players> <prop>\n",args.Arg(0)); // Error Message
+		return;
+	}
+	LIB_MRECIPIENTFILTER_CLASS mrf;
+	mrf.AddByFilter(args.Arg(1), false);
+	for(int i = 0; i < mrf.GetRecipientCount(); i++)
+	{
+		Msg("Player %i: %s\n", mrf.GetRecipientIndex(i), VAR_LIB_PROP->Prop_GetDynamic(mrf.GetRecipientEdict(i), args.Arg(2), NULL));
+	}
+}
+
+PLUGIN_CON_COMMAND(getplayerdmap, "Get player datamap")
+{
+	if(args.ArgC() < 3)
+	{
+		Msg("Syntax: %s <players> <datamap_name>\n",args.Arg(0)); // Error Message
+		return;
+	}
+	LIB_MRECIPIENTFILTER_CLASS mrf;
+	mrf.AddByFilter(args.Arg(1), false);
+	for(int i = 0; i < mrf.GetRecipientCount(); i++)
+	{
+		Msg("Player %i: %s\n", mrf.GetRecipientIndex(i), VAR_LIB_PROP->Map_GetDynamic(mrf.GetRecipientBaseEntity(i), args.Arg(2)));
+	}
+}
+}}}
+
+More samples:
+
+{{{
+PLUGIN_CON_COMMAND(teleport, "Teleport a player")
+{
+	if(!VAR_LIB_VFUNCS)
+	{
+		Msg("VFuncs features are disabled.");
+		return;
+	}
+	if(args.ArgC() < 3)
+	{
+		Msg("Syntax: %s <players> <\"x y z Position\"> [\"x y z Velocity\"]\n",args.Arg(0)); // Error Message
+		return;
+	}
+	LIB_MRECIPIENTFILTER_CLASS mrf;
+	mrf.AddByFilter(args.Arg(1), false);
+	Vector vec = LIB_STRING_CLASS::StrToVec(args.Arg(2));
+	Vector velocity = args.ArgC() < 4 ? NULL : LIB_STRING_CLASS::StrToVec(args.Arg(3));
+	for(int i = 0; i < mrf.GetRecipientCount(); i++)
+	{
+		VAR_LIB_VFUNCS->CBaseEntity_Teleport(PEntityOfEntIndex(mrf.GetRecipientIndex(i)), &vec, NULL, &velocity, "CBaseEntity::Teleport");
+	}
+}
+
+PLUGIN_CON_COMMAND(spawn, "Spanws a player")
+{
+	if(!VAR_LIB_SIGSCAN)
+	{
+		Msg("SigScan features are disabled.");
+		return;
+	}
+	if(args.ArgC() < 2)
+	{
+		Msg("Syntax: %s <players> [force]\n",args.Arg(0)); // Error Message
+		return;
+	}
+	LIB_MRECIPIENTFILTER_CLASS mrf;
+	mrf.AddByFilter(args.Arg(1), false);
+	bool force = args.ArgC() >= 3;
+	for(int i = 0; i < mrf.GetRecipientCount(); i++)
+	{
+		edict_t *pEntity = PEntityOfEntIndex(mrf.GetRecipientIndex(i));
+		if(!pEntity) continue;
+		if (force)
+		{
+			VAR_LIB_SIGSCAN->CSSPlayer_RoundRespawn(pEntity, "CSSPlayer::RoundRespawn");
+			continue;
+		}
+		if(!LIB_PLAYER_CLASS::IsAlive(pEntity))
+		{
+			VAR_LIB_SIGSCAN->CSSPlayer_RoundRespawn(pEntity, "CSSPlayer::RoundRespawn");
+		}
+	}
+}
+
+PLUGIN_CON_COMMAND(switchteam, "Switch a player fro other team")
+{
+	if(!VAR_LIB_SIGSCAN)
+	{
+		Msg("SigScan features are disabled.");
+		return;
+	}
+	if(args.ArgC() < 3)
+	{
+		Msg("Syntax: %s <players> <team>\n",args.Arg(0)); // Error Message
+		return;
+	}
+	LIB_MRECIPIENTFILTER_CLASS mrf;
+	mrf.AddByFilter(args.Arg(1), false);
+	int team = atoi(args.Arg(2));
+	for(int i = 0; i < mrf.GetRecipientCount(); i++)
+	{
+		VAR_LIB_SIGSCAN->CSSPlayer_SwitchTeam(mrf.GetRecipientEdict(i), team, "CSSPlayer::SwitchTeam");
+	}
+}
+}}}
+
+
+
+Fell free to explore :)
