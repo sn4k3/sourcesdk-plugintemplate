@@ -1,0 +1,101 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "serverplugin_plugintemplate", "plugintemplate.vcproj", "{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug - MMS Alien Swarm|Win32 = Debug - MMS Alien Swarm|Win32
+		Debug - MMS Dark Messiah|Win32 = Debug - MMS Dark Messiah|Win32
+		Debug - MMS Left 4 Dead 2|Win32 = Debug - MMS Left 4 Dead 2|Win32
+		Debug - MMS Left 4 Dead|Win32 = Debug - MMS Left 4 Dead|Win32
+		Debug - MMS Orange Box Valve|Win32 = Debug - MMS Orange Box Valve|Win32
+		Debug - MMS Orange Box|Win32 = Debug - MMS Orange Box|Win32
+		Debug - MMS Original|Win32 = Debug - MMS Original|Win32
+		Debug - VSP Alien Swarm|Win32 = Debug - VSP Alien Swarm|Win32
+		Debug - VSP Dark Messiah|Win32 = Debug - VSP Dark Messiah|Win32
+		Debug - VSP Left 4 Dead 2|Win32 = Debug - VSP Left 4 Dead 2|Win32
+		Debug - VSP Left 4 Dead|Win32 = Debug - VSP Left 4 Dead|Win32
+		Debug - VSP Orange Box Valve|Win32 = Debug - VSP Orange Box Valve|Win32
+		Debug - VSP Orange Box|Win32 = Debug - VSP Orange Box|Win32
+		Debug - VSP Original|Win32 = Debug - VSP Original|Win32
+		Release - MMS Alien Swarm|Win32 = Release - MMS Alien Swarm|Win32
+		Release - MMS Dark Messiah|Win32 = Release - MMS Dark Messiah|Win32
+		Release - MMS Left 4 Dead 2|Win32 = Release - MMS Left 4 Dead 2|Win32
+		Release - MMS Left 4 Dead|Win32 = Release - MMS Left 4 Dead|Win32
+		Release - MMS Orange Box Valve|Win32 = Release - MMS Orange Box Valve|Win32
+		Release - MMS Orange Box|Win32 = Release - MMS Orange Box|Win32
+		Release - MMS Original|Win32 = Release - MMS Original|Win32
+		Release - VSP Alien Swarm|Win32 = Release - VSP Alien Swarm|Win32
+		Release - VSP Dark Messiah|Win32 = Release - VSP Dark Messiah|Win32
+		Release - VSP Left 4 Dead 2|Win32 = Release - VSP Left 4 Dead 2|Win32
+		Release - VSP Left 4 Dead|Win32 = Release - VSP Left 4 Dead|Win32
+		Release - VSP Orange Box Valve|Win32 = Release - VSP Orange Box Valve|Win32
+		Release - VSP Orange Box|Win32 = Release - VSP Orange Box|Win32
+		Release - VSP Original|Win32 = Release - VSP Original|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Debug - MMS Alien Swarm|Win32.ActiveCfg = Debug - MMS Alien Swarm|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Debug - MMS Alien Swarm|Win32.Build.0 = Debug - MMS Alien Swarm|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Debug - MMS Dark Messiah|Win32.ActiveCfg = Debug - MMS Dark Messiah|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Debug - MMS Dark Messiah|Win32.Build.0 = Debug - MMS Dark Messiah|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Debug - MMS Left 4 Dead 2|Win32.ActiveCfg = Debug - MMS Left 4 Dead 2|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Debug - MMS Left 4 Dead 2|Win32.Build.0 = Debug - MMS Left 4 Dead 2|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Debug - MMS Left 4 Dead|Win32.ActiveCfg = Debug - MMS Left 4 Dead|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Debug - MMS Left 4 Dead|Win32.Build.0 = Debug - MMS Left 4 Dead|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Debug - MMS Orange Box Valve|Win32.ActiveCfg = Debug - MMS Orange Box Valve|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Debug - MMS Orange Box Valve|Win32.Build.0 = Debug - MMS Orange Box Valve|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Debug - MMS Orange Box|Win32.ActiveCfg = Debug - MMS Orange Box|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Debug - MMS Orange Box|Win32.Build.0 = Debug - MMS Orange Box|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Debug - MMS Original|Win32.ActiveCfg = Debug - MMS Original|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Debug - MMS Original|Win32.Build.0 = Debug - MMS Original|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Debug - VSP Alien Swarm|Win32.ActiveCfg = Debug - VSP Alien Swarm|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Debug - VSP Alien Swarm|Win32.Build.0 = Debug - VSP Alien Swarm|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Debug - VSP Dark Messiah|Win32.ActiveCfg = Debug - VSP Dark Messiah|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Debug - VSP Dark Messiah|Win32.Build.0 = Debug - VSP Dark Messiah|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Debug - VSP Left 4 Dead 2|Win32.ActiveCfg = Debug - VSP Left 4 Dead 2|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Debug - VSP Left 4 Dead 2|Win32.Build.0 = Debug - VSP Left 4 Dead 2|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Debug - VSP Left 4 Dead|Win32.ActiveCfg = Debug - VSP Left 4 Dead|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Debug - VSP Left 4 Dead|Win32.Build.0 = Debug - VSP Left 4 Dead|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Debug - VSP Orange Box Valve|Win32.ActiveCfg = Debug - VSP Orange Box Valve|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Debug - VSP Orange Box Valve|Win32.Build.0 = Debug - VSP Orange Box Valve|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Debug - VSP Orange Box|Win32.ActiveCfg = Debug - VSP Orange Box|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Debug - VSP Orange Box|Win32.Build.0 = Debug - VSP Orange Box|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Debug - VSP Original|Win32.ActiveCfg = Debug - VSP Original|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Debug - VSP Original|Win32.Build.0 = Debug - VSP Original|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Release - MMS Alien Swarm|Win32.ActiveCfg = Release - MMS Alien Swarm|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Release - MMS Alien Swarm|Win32.Build.0 = Release - MMS Alien Swarm|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Release - MMS Dark Messiah|Win32.ActiveCfg = Release - MMS Dark Messiah|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Release - MMS Dark Messiah|Win32.Build.0 = Release - MMS Dark Messiah|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Release - MMS Left 4 Dead 2|Win32.ActiveCfg = Release - MMS Left 4 Dead 2|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Release - MMS Left 4 Dead 2|Win32.Build.0 = Release - MMS Left 4 Dead 2|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Release - MMS Left 4 Dead|Win32.ActiveCfg = Release - MMS Left 4 Dead|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Release - MMS Left 4 Dead|Win32.Build.0 = Release - MMS Left 4 Dead|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Release - MMS Orange Box Valve|Win32.ActiveCfg = Release - MMS Orange Box Valve|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Release - MMS Orange Box Valve|Win32.Build.0 = Release - MMS Orange Box Valve|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Release - MMS Orange Box|Win32.ActiveCfg = Release - MMS Orange Box|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Release - MMS Orange Box|Win32.Build.0 = Release - MMS Orange Box|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Release - MMS Original|Win32.ActiveCfg = Release - MMS Original|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Release - MMS Original|Win32.Build.0 = Release - MMS Original|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Release - VSP Alien Swarm|Win32.ActiveCfg = Release - VSP Alien Swarm|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Release - VSP Alien Swarm|Win32.Build.0 = Release - VSP Alien Swarm|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Release - VSP Dark Messiah|Win32.ActiveCfg = Release - VSP Dark Messiah|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Release - VSP Dark Messiah|Win32.Build.0 = Release - VSP Dark Messiah|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Release - VSP Left 4 Dead 2|Win32.ActiveCfg = Release - VSP Left 4 Dead 2|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Release - VSP Left 4 Dead 2|Win32.Build.0 = Release - VSP Left 4 Dead 2|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Release - VSP Left 4 Dead|Win32.ActiveCfg = Release - VSP Left 4 Dead|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Release - VSP Left 4 Dead|Win32.Build.0 = Release - VSP Left 4 Dead|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Release - VSP Orange Box Valve|Win32.ActiveCfg = Release - VSP Orange Box Valve|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Release - VSP Orange Box Valve|Win32.Build.0 = Release - VSP Orange Box Valve|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Release - VSP Orange Box|Win32.ActiveCfg = Release - VSP Orange Box|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Release - VSP Orange Box|Win32.Build.0 = Release - VSP Orange Box|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Release - VSP Original|Win32.ActiveCfg = Release - VSP Original|Win32
+		{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}.Release - VSP Original|Win32.Build.0 = Release - VSP Original|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		VisualSVNWorkingCopyRoot = ..
+	EndGlobalSection
+EndGlobal
