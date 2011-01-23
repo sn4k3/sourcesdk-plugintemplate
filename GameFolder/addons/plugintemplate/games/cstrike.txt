@@ -1,0 +1,27 @@
+"Counter-Strike: Source"
+{
+	"GamePlayer"	"CSSPlayer"
+	"SigScan"
+	{
+		"CSSPlayer::RoundRespawn"
+		{
+			"sig"		"56 8B F1 8B 06 8B 90 ? ? ? ? FF D2 8B 86 ? ? ? ? 85 C0 74 ? 8B 50 ? 85 D2 74 ? 8B 48"
+			"symbol"	"_ZN9CCSPlayer12RoundRespawnEv"
+			"enable"	"1"
+		}
+		"CCSPlayer::SwitchTeam"
+		{
+			"sig"		"83 EC ? 56 57 8B 7C 24 ? 57 8B F1 E8 ? ? ? ? 83 C4 04"
+			"symbol"	"_ZN9CCSPlayer10SwitchTeamEi"
+			"enable"	"1"
+		}
+	}
+	"VFuncs"
+	{
+		"CBaseEntity::EyeAngles"
+		{
+			"windows"	"128"
+			"enable"	"1"
+		}
+	}
+}

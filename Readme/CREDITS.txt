@@ -1,0 +1,44 @@
+"Plugin Template" (SourceSDK Games Compatible) are
+(C)Copyright 2010-2011 by sn4k3 AKA Tiago Conceição
+
+ sn4k3
+	Tiago Conceição (Me)
+	Plugintemplate codding
+
+ Valve
+	Games and plugin interface
+
+ Mani-Admin-Plugin
+	http://www.mani-admin-plugin.com
+	The idea of redirect serverplugin_engine.cpp callbacks for serverplugin_main.cpp to ensure max compability and better updates came from him
+	
+ Metamod:Source Team
+	http://sourcemm.net
+	For the metamod interface and SourceHook.
+	Functions FormatIface, InterfaceSearch, VInterfaceMatch copied to serverplugin_engine for best compalibity with VSP plugins.
+	The plugin samples helpme implement the new metamod source
+
+ nemod
+	Google it!
+	Many people never know what nemod is, but all i can say it was good as Mani is now ;)
+	Timers idea came from nemod
+	In old sources i used nemod timers.
+
+ awuh0
+	http://forums.eventscripts.com/memberlist.php?mode=viewprofile&u=13
+	(EST) ES Tools developer.
+	A nice guy who teach me important things on C++ and SourceSDK.
+	He gave the following functions:
+	MRecipientFilter::(TeamToEnum, AddByFilter)
+	CStringLib::(H2toInt, Hex2Int, Str2Sig, StrToHexStr, StrNew, StrCopy)
+	CMessageLib::(Menu) from accepting dynamic options in char*
+	Plus the forgot ones
+	A big thank to awuh0, THANK YOU
+	
+
+ Mattie
+	http://mattie.net/cs/
+	Eventscripts scripts are now python based, so optional you can compile your plugin with python support.
+	And make your plugin ES friendly
+	Compile with python feature is dedicated to Eventscripts.
+	Thanks for the great EventScripts and what I learned there

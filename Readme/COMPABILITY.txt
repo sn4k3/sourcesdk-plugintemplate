@@ -1,0 +1,21 @@
+"Plugin Template" (SourceSDK Games Compatible) are
+(C)Copyright 2010-2011 by sn4k3 AKA Tiago Conceição
+
+Plugin Template is compatible with:
+
+ OS:
+	Microsoft Windows (7 - compiled and tested)
+	Linux (Ubuntu - compiled and tested)
+
+ Engines:
+	Original / Episode 1
+	Dark Messiah
+	Orange Box / Episode 2
+	Orange Box Valve / Episode 2
+	Left 4 Dead
+	Left 4 Dead 2
+	Alien Swarm
+
+MACOS not tested
+
+
