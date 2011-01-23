@@ -1,0 +1,41 @@
+"Plugin Template" (SourceSDK Games Compatible) are
+(C)Copyright 2010-2011 by sn4k3 AKA Tiago Conceição
+
+INSTALL
+
+1) First you need a copy of HL2SDK, i recommend you get it from here:
+   http://hg.alliedmods.net/hl2sdks/
+
+2) Copy 'plugintemplate' folder to: HL2SDK/utils/ or where you want
+   You can rename folder.
+
+3) Get metamod sources, if you don't want to use Metamod, you must have at same
+   Download fom: http://sourcemm.net/downloads
+   plugintemplate was compiled with Metamod:Source 1.8.5
+
+4) Unrar metamod to: HL2SDK/ or other folder
+
+5) On Windows, there is no particular directory layout required -- environment variables are used instead. The directions below apply to Windows XP, and are assumed to be similar for other versions of Windows.
+
+	Open the Control Panel (for example, via Start -> Settings).
+	Open the System control. If you don't see it, you may need to switch to "Classic view" (either via the left-hand pane or by going to Tools -> Folder Options).
+	Click the Advanced tab.
+	Click the Environment Variables button.
+
+	You can add your environment variables to either your User settings or your System settings. Create a new variable for each item in the list below. The item names are in fixed-width font and their value descriptions follow.
+
+	MMSOURCE - Path to Metamod:Source source code.
+	HL2SDK - Path to HL2SDK for Ep1/Original
+	HL2SDK-DARKM - Path to HL2SDK for Dark Messiah
+	HL2SDKOB - Path to HL2SDK for Ep2/OrangeBox
+	HL2SDKOBVALVE - Path to HL2SDK for Ep2/OrangeBox Valve
+	HL2SDKL4D - Path to HL2SDK for Left 4 Dead
+	HL2SDKL4D2 - Path to HL2SDK for Left 4 Dead 2
+	HL2SDKSWARM - Path to HL2SDK for Alien Swarm
+
+6) Installation done
+
+7) Open the plugin project and start codding.
+
+
+Final Note: If you use sourcehook on your VSP plugin you must include it in your Windows Project

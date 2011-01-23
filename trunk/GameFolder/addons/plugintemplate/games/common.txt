@@ -1,0 +1,12 @@
+// This file gets loaded for every game
+"common"
+{
+	"SigScan"
+	{
+	
+	}
+	"VFuncs"
+	{
+
+	}
+}
