@@ -53,4 +53,4 @@ People how make this plugin possible
  * *your-name-here*
         http://forums.eventscripts.com/memberlist.php?mode=viewprofile&u=13888<br>
         Support EventScripts and Python idea<br>
-        All Python implementation code came from his open source *Source Python Extensions* plugin
+        All Python implementation code and EventScripts compatible came from his open source *Source Python Extensions* plugin
